@@ -14,13 +14,13 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '961619428689288');
+    fbq('init', '1370157767963562');
     fbq('track', 'PageView');
 
     async function dispararLead(e) {
       e.preventDefault();
       const eventId = 'cr_' + Date.now();
-      fbq('track', 'CompleteRegistration', { currency: 'BRL', value: 0 }, { eventID: eventId });
+      fbq('track', 'Search'', { currency: 'BRL', value: 0 }, { eventID: eventId });
       try {
         await fetch('https://track-jp-production.up.railway.app/api/lead', {
           method: 'POST',
