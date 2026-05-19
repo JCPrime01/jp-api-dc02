@@ -1,1 +1,214 @@
-<!DOCTYPE html><html><body><p>Cole aqui o HTML da sua LP</p></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bingo Premiado</title>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '961619428689288');
+    fbq('track', 'PageView');
+
+    async function dispararLead(e) {
+      e.preventDefault();
+      const eventId = 'cr_' + Date.now();
+      fbq('track', 'CompleteRegistration', { currency: 'BRL', value: 0 }, { eventID: eventId });
+      try {
+        await fetch('https://track-jp-production.up.railway.app/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fbp: document.cookie.match(/_fbp=([^;]+)/)?.[1] || null,
+            fbc: document.cookie.match(/_fbc=([^;]+)/)?.[1] || null,
+            userAgent: navigator.userAgent,
+            eventId: eventId
+          })
+        });
+      } catch(err) {}
+      window.location.href = 'https://rd.redirecionar.online/';
+    }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #000e01;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            padding: 24px 20px;
+            color: #fff;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* TAG */
+        .tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00EC51;
+            background: rgba(0,236,81,0.08);
+            border: 1px solid rgba(0,236,81,0.2);
+            border-radius: 999px;
+            padding: 6px 16px;
+        }
+
+        /* HEADLINE */
+        .headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 14vw, 64px);
+            line-height: 0.9;
+            letter-spacing: 1px;
+        }
+        .headline .white { color: #fff; }
+        .headline .green {
+            color: #00EC51;
+            text-shadow: 0 0 40px rgba(0,236,81,0.5);
+        }
+
+        /* COPY */
+        .copy {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.6;
+            max-width: 300px;
+        }
+        .copy strong { color: #fff; }
+
+        /* DIVISOR */
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: #00EC51;
+            border-radius: 999px;
+            opacity: 0.4;
+        }
+
+        /* LISTA SIMPLES */
+        .lista {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            text-align: left;
+        }
+        .lista-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #ccc;
+        }
+        .lista-item span { color: #00EC51; font-size: 16px; flex-shrink: 0; }
+        .lista-item strong { color: #fff; }
+
+        /* BOTÃO */
+        .btn-wrap {
+            width: 100%;
+            border-radius: 50px;
+            padding: 2.5px;
+            background: linear-gradient(135deg, #FFE600, #ff8c00, #FFE600);
+            background-size: 200%;
+            animation: grad 2s linear infinite;
+            box-shadow: 0 0 30px rgba(255,200,0,0.4), 0 0 60px rgba(255,120,0,0.2);
+        }
+        @keyframes grad { 0%{background-position:0%} 50%{background-position:100%} 100%{background-position:0%} }
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            background: linear-gradient(135deg, #ffb700, #ff6a00);
+            color: #fff;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            padding: 18px 14px 14px;
+            border-radius: 48px;
+            text-decoration: none;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        .btn-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0;
+            color: rgba(255,255,255,0.8);
+            text-shadow: none;
+            margin-top: 3px;
+        }
+
+        .rodape {
+            font-size: 11px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .rodape span { color: #00EC51; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+
+        <div class="tag">⚡ Acesso gratuito liberado</div>
+
+        <h1 class="headline">
+            <span class="white">EU MANDO<br>O BILHETE,<br></span>
+            <span class="green">VOCÊ FAZ<br>O BINGO</span>
+        </h1>
+
+        <p class="copy">
+            Todo dia eu analiso os jogos e monto o bilhete.<br>
+            <strong>Você só precisa pegar e jogar.</strong>
+        </p>
+
+        <div class="divider"></div>
+
+        <div class="lista">
+            <div class="lista-item"><span>✅</span> <div>Bilhete pronto no <strong>WhatsApp</strong> antes de cada rodada</div></div>
+            <div class="lista-item"><span>✅</span> <div><strong>+83% de acerto</strong> nos últimos 30 dias</div></div>
+            <div class="lista-item"><span>✅</span> <div><strong>100% gratuito</strong> — sem cartão, sem enrolação</div></div>
+        </div>
+
+        <div class="btn-wrap">
+            <a href="https://rd.redirecionar.online/" class="btn" onclick="dispararLead(event)">
+                🚀 QUERO FAZER O BINGO
+                <span class="btn-sub">Gratuito · Acesso imediato · Vagas limitadas</span>
+            </a>
+        </div>
+
+        <p class="rodape">
+            <span>🔒 Seguro e gratuito.</span> Sem cadastro chato.<br><br>
+            <strong>Proibido para menores de 18 anos.</strong><br>
+            © 2025 – Jogador Caro
+        </p>
+
+    </div>
+
+</body>
+</html>
