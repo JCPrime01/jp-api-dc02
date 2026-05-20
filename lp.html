@@ -20,9 +20,9 @@
     async function dispararLead(e) {
       e.preventDefault();
       const eventId = 'cr_' + Date.now();
-      fbq('track', 'Search'', { currency: 'BRL', value: 0 }, { eventID: eventId });
+      fbq('track', 'Search', { currency: 'BRL', value: 0 }, { eventID: eventId });
       try {
-        await fetch('https://track-jp-production.up.railway.app/api/lead', {
+        await fetch('/api/lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -212,3 +212,4 @@
 
 </body>
 </html>
+
